@@ -1,0 +1,27 @@
+.post {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--twitter-background);
+
+  &-body {
+    flex: 1;
+    padding: 10px;
+
+    & > img {
+      border-radius: 20px;
+      width: 100%;
+    }
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  &-headerDescription {
+    margin-bottom: 10px;
+    font-size: 15px;
+
+  }
+}
