@@ -1,15 +1,15 @@
-import React from 'react'
-import TwitterIcon from '@mui/icons-material/Twitter';
-import HomeIcon from '@mui/icons-material/Home';
-import SearchIcon from '@mui/icons-material/Search';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import React from "react";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import HomeIcon from "@mui/icons-material/Home";
+import SearchIcon from "@mui/icons-material/Search";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { Button } from '@mui/material';
-import SidebarOption from './SidebarOption';
+import { Button } from "@mui/material";
+import SidebarOption from "./SidebarOption";
 import "./Sidebar.scss";
 
 const Sidebar = () => {
@@ -24,9 +24,11 @@ const Sidebar = () => {
       <SidebarOption text="リスト" Icon={ListAltIcon} />
       <SidebarOption text="プロフィール" Icon={PermIdentityIcon} />
       <SidebarOption text="もっとみる" Icon={MoreHorizIcon} />
-      <Button variant="outlined" className="sidebar-tweet">ツイートする</Button>
+      <Button variant="outlined" className="sidebar-tweet" fullWidth>
+        ツイートする
+      </Button>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

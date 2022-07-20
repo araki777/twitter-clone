@@ -1,18 +1,18 @@
-import React from 'react'
-import "./SidebarOption.scss"
+import React from "react";
+import "./SidebarOption.scss";
 
 interface Props {
-  text: string,
-  Icon: any
+  text: string;
+  Icon: React.ElementType;
 }
 
-const SidebarOption: React.FC<Props> = ({ text, Icon }) => {
+const SidebarOption: React.FC<Props> = (props) => {
   return (
     <div className="SidebarOption">
-      <Icon />
-      <h2>{text}</h2>
+      <props.Icon />
+      <h2>{props.text}</h2>
     </div>
-  )
-}
+  );
+};
 
-export default SidebarOption
+export default SidebarOption;

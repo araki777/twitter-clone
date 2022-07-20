@@ -1,28 +1,44 @@
-import { ChatBubbleOutline, Repeat, FavoriteBorder, PublishOutlined, VerifiedUser } from '@mui/icons-material'
-import { Avatar } from '@mui/material'
-import React from 'react'
-import "./Post.scss"
+import {
+  ChatBubbleOutline,
+  Repeat,
+  FavoriteBorder,
+  PublishOutlined,
+  VerifiedUser,
+} from "@mui/icons-material";
+import { Avatar } from "@mui/material";
+import React from "react";
+import "./Post.scss";
 
-function Post() {
+interface Props {
+  displayName: string;
+  username: string;
+  verified: boolean;
+  text: string;
+  avatar: string;
+  image: string;
+}
+
+const Post: React.FC<Props> = (props) => {
   return (
     <div className="post">
       <div className="post-avatar">
-        <Avatar />
+        <Avatar src={props.avatar} />
       </div>
       <div className="post-body">
         <div className="post-header">
           <div className="post-headerText">
-            <h3>プログラミングチュートリアル</h3>
-            <span className="post-headerSpecial">
-              <VerifiedUser className="post-badge" />
-              @Ma_araki
-            </span>
+            <h3>
+              {props.displayName}
+              <span className="post-headerSpecial">
+                <VerifiedUser className="post-badge" />@{props.username}
+              </span>
+            </h3>
           </div>
           <div className="post-headerDescription">
-            <p>Reactなう。</p>
+            <p>{props.text}</p>
           </div>
         </div>
-        <img src="https://source.unsplash.com/random" />
+        <img src={props.image} />
         <div className="post-footer">
           <ChatBubbleOutline fontSize="small" />
           <Repeat fontSize="small" />
@@ -31,7 +47,7 @@ function Post() {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;
