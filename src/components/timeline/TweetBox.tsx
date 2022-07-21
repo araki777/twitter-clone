@@ -2,7 +2,7 @@ import { Avatar, Button } from '@mui/material'
 import React from 'react'
 import "./TweetBox.scss"
 
-function TweetBox() {
+const TweetBox = () => {
   return (
     <div className="tweetBox">
       <form>

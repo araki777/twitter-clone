@@ -2,8 +2,19 @@ import React from "react";
 import Post from "./Post";
 import "./Timeline.scss";
 import TweetBox from "./TweetBox";
+import db from "../../firebase";
+import  { PostsConverter } from "../../firebaseConverter"
+import { Posts } from "types"
+import { collection, getDocs } from "firebase/firestore"
 
-function Timeline() {
+async function getPosts(): Promise<Posts[]> {
+  const collRef = collection(db, '/books').withConverter(PostsConverter)
+  const snapshot = await getDocs(collRef)
+  return snapshot.docs.map((doc) => doc.data())
+}
+
+const Timeline = () => {
+
   return (
     <div className="timeline">
       <div className="timeline-header">
