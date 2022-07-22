@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Post from "./Post";
 import "./Timeline.scss";
 import TweetBox from "./TweetBox";
@@ -7,13 +7,21 @@ import  { PostsConverter } from "../../firebaseConverter"
 import { Posts } from "types"
 import { collection, getDocs } from "firebase/firestore"
 
-async function getPosts(): Promise<Posts[]> {
-  const collRef = collection(db, '/books').withConverter(PostsConverter)
-  const snapshot = await getDocs(collRef)
-  return snapshot.docs.map((doc) => doc.data())
-}
-
 const Timeline = () => {
+  const [posts, setPosts] = useState<Posts[]>([]);
+
+  const collRef = collection(db, '/posts').withConverter(PostsConverter)
+  const didLogRef = useRef(false);
+  useEffect(() => {
+    if (didLogRef.current === false) {
+      async function getPosts() {
+        const snapshot = await getDocs(collRef)
+        console.log(snapshot)
+        setPosts(snapshot.docs.map((doc) => doc.data()))
+      }
+      getPosts()
+    }
+  }, []);
 
   return (
     <div className="timeline">
@@ -21,16 +29,18 @@ const Timeline = () => {
         <h2>ホーム</h2>
       </div>
       <TweetBox />
-      <Post
-        displayName="プログラミングチュートリアル"
-        username="Ma_araki"
-        verified={true}
-        text="初めてのツイート"
-        avatar="http://shincode.info/wp-content/uploads/2021/12/icon.png"
-        image="https://source.unsplash.com/random"
-      />
+      {posts.map((post) => (
+        <Post
+          displayName={post.displayName}
+          username={post.username}
+          verified={post.verified}
+          text={post.text}
+          avatar={post.avatar}
+          image={post.image}
+        />
+      ))}
     </div>
   );
-}
+};
 
 export default Timeline;

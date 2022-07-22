@@ -8,17 +8,9 @@ import {
 import { Avatar } from "@mui/material";
 import React from "react";
 import "./Post.scss";
+import { Posts } from "types"
 
-interface Props {
-  displayName: string;
-  username: string;
-  verified: boolean;
-  text: string;
-  avatar: string;
-  image: string;
-}
-
-const Post: React.FC<Props> = (props) => {
+const Post: React.FC<Posts> = (props) => {
   return (
     <div className="post">
       <div className="post-avatar">
