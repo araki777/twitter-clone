@@ -6,13 +6,13 @@ import {
   VerifiedUser,
 } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
-import React from "react";
+import React, { forwardRef } from "react";
 import "./Post.scss";
 import { Posts } from "types"
 
-const Post: React.FC<Posts> = (props) => {
+const Post: React.FC<Posts> = forwardRef((props, ref) => {
   return (
-    <div className="post">
+    <div className="post" ref={ref}>
       <div className="post-avatar">
         <Avatar src={props.avatar} />
       </div>
@@ -40,6 +40,6 @@ const Post: React.FC<Posts> = (props) => {
       </div>
     </div>
   );
-};
+});
 
 export default Post;
