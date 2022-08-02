@@ -1,5 +1,5 @@
 declare module "types" {
-  export type Posts = {
+  export interface Posts {
     avatar: string,
     displayName: string,
     image: string,

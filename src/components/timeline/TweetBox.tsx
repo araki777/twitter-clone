@@ -1,10 +1,15 @@
 import { Avatar, Button } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useState, Dispatch, SetStateAction, ReactNode } from 'react'
 import "./TweetBox.scss"
 import { collection, addDoc, serverTimestamp } from "firebase/firestore"
 import db from "../../firebase"
 
-const TweetBox = () => {
+type Props = {
+  tweetAnimation: boolean,
+  setTweetAnimation: Dispatch<SetStateAction<boolean>>
+}
+
+const TweetBox = (props: Props) => {
   const [tweetMessage, setTweetMessage] = useState("");
   const [tweetImage, setTweetImage] = useState("");
 
@@ -23,6 +28,10 @@ const TweetBox = () => {
 
     setTweetMessage("");
     setTweetImage("");
+
+    if (props.tweetAnimation === false) {
+      props.setTweetAnimation(prevState => !prevState);
+    }
   }
 
   return (

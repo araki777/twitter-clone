@@ -6,13 +6,17 @@ import {
   VerifiedUser,
 } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
-import React, { forwardRef } from "react";
+import React from "react";
 import "./Post.scss";
 import { Posts } from "types"
 
-const Post: React.FC<Posts> = forwardRef((props, ref) => {
+interface tweetAnimationType extends Posts {
+  animation: string
+}
+
+const Post: React.FC<tweetAnimationType> = (props) => {
   return (
-    <div className="post" ref={ref}>
+    <div className={`post ${props.animation}`.trim()}>
       <div className="post-avatar">
         <Avatar src={props.avatar} />
       </div>
@@ -40,6 +44,6 @@ const Post: React.FC<Posts> = forwardRef((props, ref) => {
       </div>
     </div>
   );
-});
+};
 
 export default Post;
